@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Producto Patrocinado</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        padding: 25px 0;
+        font-size: 2em;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        text-align: center;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .product-image {
+        max-width: 100%;
+        border-radius: 10px;
+        transition: transform 0.3s;
+    }
+
+    .product-image:hover {
+        transform: scale(1.05);
+    }
+
+    h2 {
+        color: #333;
+        margin-top: 20px;
+    }
+
+    p {
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .buy-button {
+        background-color: #FF5722;
+        color: white;
+        border: none;
+        padding: 18px 40px;
+        font-size: 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .buy-button:hover {
+        background-color: #e64a19;
+        transform: scale(1.05);
+    }
+
+    .reviews {
+        margin-top: 30px;
+        text-align: left;
+    }
+
+    .review {
+        background: #f9f9f9;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .stars {
+        color: #FFD700;
+        font-size: 18px;
+    }
+
+    .countdown {
+        margin-top: 20px;
+        font-size: 1.5em;
+        color: #d32f2f;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px 0;
+        color: #777;
+        font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+<header>Producto Recomendado</header>
+
+<div class="container">
+    <img src="https://via.placeholder.com/500x350.png?text=Producto+Genial" alt="Producto" class="product-image">
+    <h2>Nombre del Producto</h2>
+    <p>Este producto es increíble, perfecto para mejorar tu día a día. Alta calidad y excelentes reseñas de clientes satisfechos.</p>
+
+    <button class="buy-button" onclick="buyProduct()">Comprar Ahora</button>
+
+    <div class="countdown" id="countdown">
+        Oferta termina en: <span id="timer">00:00:00</span>
+    </div>
+
+    <div class="reviews">
+        <h3>Reseñas de clientes</h3>
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>"Me encantó el producto, superó mis expectativas!" - Ana R.</p>
+        </div>
+        <div class="review">
+            <div class="stars">★★★★☆</div>
+            <p>"Muy bueno, lo recomiendo ampliamente." - Carlos M.</p>
+        </div>
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>"Excelente calidad y envío rápido." - Laura G.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2025 Tu Sitio Web | Este es un enlace de afiliado
+</footer>
+
+<script>
+    // Link de afiliado
+    function buyProduct() {
+        const affiliateLink = "https://www.ejemplo.com/afiliado123";
+        window.open(affiliateLink, "_blank");
+    }
+
+    // Contador regresivo de oferta limitada
+    function startCountdown(durationMinutes) {
+        let countdown = durationMinutes * 60;
+        const timerEl = document.getElementById('timer');
+
+        const interval = setInterval(() => {
+            const hours = Math.floor(countdown / 3600);
+            const minutes = Math.floor((countdown % 3600) / 60);
+            const seconds = countdown % 60;
+
+            timerEl.textContent = 
+                String(hours).padStart(2,'0') + ':' +
+                String(minutes).padStart(2,'0') + ':' +
+                String(seconds).padStart(2,'0');
+
+            countdown--;
+
+            if(countdown < 0) {
+                clearInterval(interval);
+                timerEl.textContent = "¡Oferta terminada!";
+            }
+        }, 1000);
+    }
+
+    // Iniciar contador de 1 hora (puedes cambiarlo)
+    startCountdown(60);
+</script>
+
+</body>
+</html>
